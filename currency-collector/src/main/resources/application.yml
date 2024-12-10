@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: currency-collector
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    template:
+      default-topic: currency_rates
+
+collect:
+  currency_rates:
+    schedule: "0 * * * * *"

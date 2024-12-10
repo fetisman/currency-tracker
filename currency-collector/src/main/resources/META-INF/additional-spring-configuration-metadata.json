@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "collect:currency_rates:schedule",
+      "type": "java.lang.String",
+      "description": "Description for collect:currency_rates:schedule."
+  }
+] }

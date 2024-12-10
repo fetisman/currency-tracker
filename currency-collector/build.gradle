@@ -1,0 +1,18 @@
+plugins {
+    id 'org.springframework.boot'
+    id 'io.spring.dependency-management'
+}
+
+dependencies {
+    implementation 'org.springframework.kafka:spring-kafka:3.3.0'
+    implementation 'org.springframework.boot:spring-boot-starter-webflux:3.1.4'
+    implementation 'com.fasterxml.jackson.core:jackson-databind'
+
+    implementation 'javax.validation:validation-api:2.0.1.Final'
+    implementation 'org.glassfish:javax.el:3.0.0'
+
+    testImplementation 'org.springframework.kafka:spring-kafka-test:3.3.0'
+    testImplementation 'org.awaitility:awaitility:4.2.0'
+
+    implementation project(':currency-model')
+}

@@ -1,0 +1,5 @@
+rootProject.name = 'currency-tracker'
+include 'currency-collector'
+include 'currency-aggregator'
+include 'currency-api'
+include 'currency-model'

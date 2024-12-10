@@ -1,0 +1,61 @@
+plugins {
+    id 'org.springframework.boot' version "${springBootPlugin}" apply false
+    id 'io.spring.dependency-management' version "${dependencyManagementPlugin}" apply false
+    id 'java'
+}
+
+group = 'com.fetisman'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+subprojects {
+    apply plugin: 'java'
+
+    java {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    group = rootProject.group
+    version = rootProject.version
+
+    repositories {
+        mavenCentral()
+    }
+
+    configurations {
+        compileOnly {
+            extendsFrom annotationProcessor
+        }
+    }
+
+    dependencies {
+        implementation 'org.springframework.boot:spring-boot-starter-web:3.1.4'
+
+        implementation "org.projectlombok:lombok:${lombok}"
+        annotationProcessor "org.projectlombok:lombok:${lombok}"
+        testImplementation "org.projectlombok:lombok:${lombok}"
+        testAnnotationProcessor "org.projectlombok:lombok:${lombok}"
+
+        implementation 'org.hibernate.validator:hibernate-validator:6.2.5.Final'
+        implementation 'org.glassfish:javax.el:3.0.0'
+
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+        testImplementation 'org.junit.jupiter:junit-jupiter-api'
+        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+        testImplementation 'org.mockito:mockito-core'
+        testImplementation 'org.mockito:mockito-junit-jupiter'
+        testImplementation 'io.projectreactor:reactor-test:3.5.11'
+    }
+
+    wrapper {
+        gradleVersion = '8.3'
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+}

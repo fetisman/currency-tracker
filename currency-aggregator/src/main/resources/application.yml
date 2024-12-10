@@ -1,0 +1,29 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: currency-aggregator
+  kafka:
+    consumer:
+        bootstrap-servers: localhost:9092
+        group-id: currency-aggregator-group
+        auto-offset-reset: earliest
+        key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+        value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://${DATABASE_HOST:localhost}:${DATABASE_PORT:5432}/${DATABASE_NAME:currency_service}
+    username: ${DATABASE_USER:postgres}
+    password: ${DATABASE_PASSWORD:pswd}
+  jpa:
+    hibernate:
+      ddl-auto: update
+  cache:
+    type: redis
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      password: redispswd
+      connect-timeout: 2000ms
